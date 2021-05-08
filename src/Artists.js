@@ -1,31 +1,35 @@
+// importing
 import React from 'react';
 import artistImage from './assets/images/profilepic.png';
-
 class Artists extends React.Component{
     render(){
         return(
             <div style={styles.artistsContainer}>
+                {/* title bar */}
                  <div style={styles.titleBar}>
-                        <p style={{fontWeight:'bold'}}>iPod</p>
-                        <img style={styles.battery} src="https://image.flaticon.com/icons/svg/3103/3103446.svg"></img>
-                    </div>
+                    <p style={{fontWeight:'bold'}}>iPod</p>
+                    <img style={styles.battery} src="https://image.flaticon.com/icons/svg/3103/3103446.svg"></img>
+                </div>
+                {/* styling of artist */}
                 <div style={styles.info}>
                     <div style={styles.imageContainer}>
                     </div>   
                     <div style={styles.subInfo}>
-                        <h4 style={{marginBottom:'0.5rem'}}>iPod.js <span><img style={styles.image} src="https://image.flaticon.com/icons/svg/953/953909.svg" /></span></h4>
+                        <h4 style={{marginBottom:'0.5rem',fontSize:'25px'}}>iPod.js <span><img style={styles.image} src="https://image.flaticon.com/icons/svg/953/953909.svg" /></span></h4>
                         <p style={{marginBottom:'0'}}> React Project</p>
                         <p>Made by : Bhavya Tanwar</p>
                     </div> 
                 </div>
+                {/* thanking */}
                 <div style={styles.info2}>
-                <h5 style={{alignSelf : 'center'}}>Hope you liked the app! </h5>
-                <h5 style={{alignSelf : 'center'}}>Thank You! Visit Again :) </h5>
+                    <p style={{alignSelf : 'center', fontWeight:'bold'}}>Hope you liked the app!</p> 
+                    <p style={{alignSelf : 'center', fontWeight:'bold'}}>Thank You! Visit Again :)</p>
                 </div>
             </div>
         );
     }
 }
+// styles for artist
 const styles = {
     artistsContainer : {
         height : '100%',
@@ -44,7 +48,8 @@ const styles = {
     },
     image : {
         width: '2rem',
-        height : '2rem'
+        height : '2rem',
+        marginLeft: '70px'
     },
     info : {
         height : '70%',
@@ -55,18 +60,19 @@ const styles = {
     },
     info2 : {
         width : '100%',
-        height : '30%',
-        display : 'flex',
-        flexDirection : 'row',
-        flexWrap : 'wrap',
-        justifyContent : 'center'
+        height : '100%',
+        // display : 'flex',
+        // flexDirection : 'row',
+        // flexWrap : 'wrap',
+        // justifyContent : 'center'
+        textAlign : 'center'
     },
     subInfo : {
         alignSelf : 'center'
     },
     titleBar : {
         height:'10%',
-        width:'100%',
+        width:'96%',
         borderRadius:'12px 0 0 0',
         backgroundImage: 'linear-gradient(0deg, rgb(123, 132, 140), transparent)',
         borderBottom: '1px solid #6c757d',

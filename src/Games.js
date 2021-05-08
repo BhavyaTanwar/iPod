@@ -1,24 +1,23 @@
+// importing
 import React from 'react';
-
 class Games extends React.Component{
-    
     render(){
         return(
             <div style={styles.settings} >
-                 <div style={styles.titleBar}>
-                        <p style={{fontWeight:'bold'}}>iPod</p>
-                        <img style={styles.battery} src="https://image.flaticon.com/icons/svg/3103/3103446.svg"></img>
-                    </div>
-                <div style={{width : '100%' , height : '90%'}}>
-                    <img style={styles.image} src="https://media2.giphy.com/media/uYe2emzPgDfj2/giphy.webp?cid=ecf05e47fa455dac230de80fff0206077175b008801bc689&rid=giphy.webp" />
+                {/* title bar */}
+                <div style={styles.titleBar}>
+                    <p style={{fontWeight:'bold'}}>iPod</p>
+                    <img style={styles.battery} src="https://image.flaticon.com/icons/svg/3103/3103446.svg"></img>
                 </div>
-                
+                {/* game */}
+                <div style={{width : '100%' , height : '90%'}}>
+                    <img style={styles.image} src="https://media1.giphy.com/media/d9QiBcfzg64Io/giphy.gif" />
+                </div>
             </div>
         );
     }
-    
 }
-
+// styling for games
 const styles = {
     settings : {
         width : '100%',
@@ -43,13 +42,10 @@ const styles = {
         display:'flex',
         flexDirecton : 'row',
         justifyContent : 'space-between'
-
     },
     battery :{
         width : '20px',
         height: '20px',
     }
 }
-
-
 export default Games;

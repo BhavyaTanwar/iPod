@@ -1,9 +1,10 @@
+//importing
 import React from 'react';
 import Screen from './Screen';
 import ZingTouch from 'zingtouch';
 import sound from './assets/music/ZindagiDoPalKi.mp3'
-
 class Ipod extends React.Component{
+    //constructor 
     constructor(){
         super();
         this.state = {
@@ -13,21 +14,18 @@ class Ipod extends React.Component{
             play : true
         }
     }
+    //to rotate wheel
     rotateWheel = () => {
         var containerElement = document.getElementById('inner-container');
         var activeRegion = new ZingTouch.Region(containerElement);
-        // var childElement = document.getElementById('inner-container');
         var change = 0;
         var self = this;
         self.state.enter = self.state.enter + 1;
-        
         if(self.state.enter < 2){
             activeRegion.bind(containerElement, 'rotate', function(event){
                 //Perform Operations
-                
                 var newAngle = event.detail.distanceFromLast;
                 console.log(newAngle);
-        
                 if(newAngle < 0){
                     console.log(change);
                     change++;
@@ -105,9 +103,10 @@ class Ipod extends React.Component{
         }else{
             console.log("Not allowed to enter")
         }
-        
     }
+    //to change page 
     changePage = () => {
+        //change the pages acc to the command
         if(this.state.activeItem === 'Music'){
             this.setState({
                 activeItem : 'MyMusic',
@@ -125,8 +124,9 @@ class Ipod extends React.Component{
             })
         }         
     }
+    // to change page back to home screen
     changePageToHomeScreen = () => {
-
+        //changing pages acc to the command
         if(this.state.activeItem === 'MyMusic' || this.state.activeItem === 'Artists'){
             this.setState({
                 activeItem : 'Music',
@@ -138,8 +138,8 @@ class Ipod extends React.Component{
                 activePage : 'Home'
             })
         }
-        
     }
+    //toggle
     toggle = () => {
         if(this.state.activePage === 'MyMusic'){
             if(this.state.play === true){
@@ -167,16 +167,20 @@ class Ipod extends React.Component{
     render() {
         return (
             <div style = {styles.ipodContainer}>
+                {/* audio tag for music */}
                 <audio className="audio-element">
                     <source src={sound}></source>
                 </audio>    
+                {/* to show the elements of screen */}
                 <Screen activeItem={this.state.activeItem} activePage={this.state.activePage} audio={this.state.audio} />
                 <div id='inner-container' style = {styles.wheel} onMouseOver={this.rotateWheel}>
+                    {/* menu button */}
                     <div style = {styles.buttonContainer}>
                         <div style = {styles.menuButton}>
-                            <i onClick={this.changePageToHomeScreen} style = {styles.image} className="fas fa-bars"></i>
+                            <i onClick={this.changePageToHomeScreen} style = {styles.image}> MENU </i>
                         </div> 
                     </div>
+                    {/* forward and backward button */}
                     <div style = {styles.buttonContainer}>
                         <div style = {styles.middleButtons}>       
                             <i style = {styles.image} className="fas fa-fast-backward"></i>
@@ -184,6 +188,7 @@ class Ipod extends React.Component{
                             <i style = {styles.image} className="fas fa-fast-forward"></i>
                         </div>
                     </div>
+                    {/* play pause button */}
                     <div style = {styles.buttonContainer}>
                         <div onClick={this.toggle} style = {styles.playButton}>
                             <i onClick={this.toggle} style = {styles.image} className="fas fa-play"></i>&nbsp;<i onClick={this.toggle} style = {styles.image} className="fas fa-pause"></i>
@@ -194,6 +199,7 @@ class Ipod extends React.Component{
         )
     }
 }
+// styling for iPod
 const styles = {
     ipodContainer : {
         height : '33rem',
@@ -204,7 +210,8 @@ const styles = {
         flexDirection : 'row',
         flexWrap : 'wrap',
         justifyContent : 'center',
-        borderRadius : '24px'
+        borderRadius : '24px',
+        boxShadow : '7px 15px'
     },
     wheel : {
         width : '75%',

@@ -1,6 +1,6 @@
+// importing
 import React from 'react';
 import sound from './assets/music/ZindagiDoPalKi.mp3'
-
 class MyMusic extends React.Component{
     constructor(){
         super();
@@ -11,18 +11,19 @@ class MyMusic extends React.Component{
     componentDidMount(){
         let self = this;
         self.props.audio.play();
-            self.props.audio.addEventListener("timeupdate",function(){
-                if(self.state.isMounted){
-                    var pos = self.props.audio.currentTime/self.props.audio.duration;
-                    self.updateTime();
-                    let fill = document.getElementById("fill");
-                    console.log(fill);
-                    if(fill !== null){
-                        fill.style.width = pos*100 + "%";
-                    }
+        self.props.audio.addEventListener("timeupdate",function(){
+            if(self.state.isMounted){
+                var pos = self.props.audio.currentTime/self.props.audio.duration;
+                self.updateTime();
+                let fill = document.getElementById("fill");
+                console.log(fill);
+                if(fill !== null){
+                    fill.style.width = pos*100 + "%";
                 }
-            })
+            }
+        })
     }
+    // updating time of music as it is played
     updateTime = () =>{
         this.setState({
             audio : this.props.audio
@@ -35,10 +36,12 @@ class MyMusic extends React.Component{
         let audio = this.props.audio;
         return(
             <div style={styles.myMusicContainer}>
+                {/* title bar */}
                 <div style={styles.titleBar}>
                         <p style={{fontWeight:'bold'}}>iPod</p>
                         <img style={styles.battery} src="https://image.flaticon.com/icons/svg/3103/3103446.svg"></img>
                 </div>
+                {/* current song info */}
                 <div style={styles.info}>
                     <img style={styles.image} src="https://d37atgyntjgeo4.cloudfront.net/images/detailed/25/kites_zindagi_do_pal_ki.jpg?t=1392966447"></img>
                     <div style={styles.subInfo}>
@@ -46,6 +49,7 @@ class MyMusic extends React.Component{
                         <p style={{marginBottom:'0'}}>K.K.</p>
                     </div>         
                 </div>
+                {/* status bar  */}
                 <div style={styles.statusBar}>
                     <p style={styles.currTime}>{audio !== null ? Math.floor(audio.currentTime) : '0 / 0'}</p>
                     <div style={styles.seekBar}>
@@ -57,6 +61,7 @@ class MyMusic extends React.Component{
         );
     }
 }
+// styling for current music being played
 const styles = {
     myMusicContainer : {
         height : '100%',
@@ -109,7 +114,7 @@ const styles = {
     },
     titleBar : {
         height:'10%',
-        width:'100%',
+        width:'96%',
         borderRadius:'12px 0 0 0',
         backgroundImage: 'linear-gradient(0deg, rgb(123, 132, 140), transparent)',
         borderBottom: '1px solid #6c757d',

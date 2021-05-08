@@ -1,24 +1,24 @@
+// importing
 import React from 'react';
-
-class Settings extends React.Component{
-    
+class Settings extends React.Component{ 
     render(){
         return(
+            // settings
             <div style={styles.settings} >
-
+                {/* title bar */}
                 <div style={styles.titleBar}>
                         <p style={{fontWeight:'bold'}}>iPod</p>
                         <img style={styles.battery} src="https://image.flaticon.com/icons/svg/3103/3103446.svg"></img>
                 </div>
+                {/* setting icon */}
                 <div style={{width : '100%' , height : '90%',display:'flex' , flexDirection : 'row' , justifyContent: 'center'}}>
                     <img style={styles.image} src="https://image.flaticon.com/icons/svg/929/929435.svg" />
                 </div>
             </div>
         );
     }
-    
 }
-
+// styling for settings
 const styles = {
     settings : {
         width : '100%',
@@ -43,12 +43,10 @@ const styles = {
         display:'flex',
         flexDirecton : 'row',
         justifyContent : 'space-between'
-
     },
     battery :{
         width : '20px',
         height: '20px',
     }
 }
-
 export default Settings;
