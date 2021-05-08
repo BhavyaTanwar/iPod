@@ -10,17 +10,19 @@ class Ipod extends React.Component{
                 <div id="inner-container" style={styles.wheel}>
                     <div style={styles.buttonContainer}>
                         <div style={styles.menuButton}>
-
+                            <i style = {styles.image} className="fas fa-bars"></i>
                         </div>
                     </div>
                     <div style ={styles.buttonContainer}>
                         <div style={styles.middleButtons}>
-
+                            <i style = {styles.image} className="fas fa-fast-backward"></i>
+                            <div style={{backgroundImage: 'linear-gradient(45deg, #8c8181, transparent)' , width : '5rem' , height : '5rem' , borderRadius : '50%'}}></div>
+                            <i style = {styles.image} className="fas fa-fast-forward"></i>
                         </div>
                     </div>
                     <div style={styles.buttonContainer}>
                         <div style={styles.playButton}>
-
+                        <i style = {styles.image} className="fas fa-play"></i>&nbsp;<i onClick={this.toggle} style = {styles.image} className="fas fa-pause"></i>
                         </div>
                     </div>
                 </div>
