@@ -1,6 +1,7 @@
 import React from 'react';
 import Home from './Home';
 import Music from './Music';
+import Games from './Games';
 
 class Screen extends React.Component{
     render(){
@@ -8,6 +9,7 @@ class Screen extends React.Component{
             <div style={styles.screen} id='screen-container'>
                 {this.props.activePage==='Home'?<Home activeItem = {this.props.activeItem}/> : null}
                 {this.props.activePage==='Music'?<Music activeItem={this.props.activeItem}/> : null}
+                {this.props.activePage==='Games'?<Games /> : null}
             </div>
         )
     }
