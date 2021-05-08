@@ -2,6 +2,7 @@ import React from 'react';
 import Home from './Home';
 import Music from './Music';
 import Games from './Games';
+import Settings from './Settings';
 
 class Screen extends React.Component{
     render(){
@@ -10,6 +11,7 @@ class Screen extends React.Component{
                 {this.props.activePage==='Home'?<Home activeItem = {this.props.activeItem}/> : null}
                 {this.props.activePage==='Music'?<Music activeItem={this.props.activeItem}/> : null}
                 {this.props.activePage==='Games'?<Games /> : null}
+                {this.props.activePage==='Settings'?<Settings /> : null}
             </div>
         )
     }
