@@ -13,6 +13,24 @@ class Ipod extends React.Component{
             play : true
         }
     }
+    changePage = () => {
+        if(this.state.activeItem === 'Music'){
+            this.setState({
+                activeItem : 'MyMusic',
+                activePage : this.state.activeItem
+            })
+        }else if(this.state.activeItem === 'NowPlaying'){
+            this.setState({
+                activeItem : 'NowPlaying',
+                activePage : 'MyMusic'
+            })
+        }else{
+            this.setState({
+                activeItem : this.state.activeItem,
+                activePage : this.state.activeItem
+            })
+        }         
+    }
     componentDidMount(){
         let audio = document.getElementsByClassName("audio-element")[0];
         console.log(audio)
