@@ -1,12 +1,24 @@
 import React from 'react';
+import Screen from './Screen';
+import ZingTouch from 'zingtouch';
 
 class Ipod extends React.Component{
+    constructor(){
+        super();
+        this.state = {
+            activeItem : 'NowPlaying',
+            activePage : 'Home',
+            enter : 0,
+            play : true
+        }
+    }
     render() {
         return (
             <div style = {styles.ipodContainer}>
                 <audio className = "audio-element">
                     <source></source>
                 </audio>
+                <Screen activeItem={this.state.activeItem} activePage={this.state.activePage} audio={this.state.audio} />
                 <div id="inner-container" style={styles.wheel}>
                     <div style={styles.buttonContainer}>
                         <div style={styles.menuButton}>
