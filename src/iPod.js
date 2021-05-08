@@ -13,6 +13,100 @@ class Ipod extends React.Component{
             play : true
         }
     }
+    rotateWheel = () => {
+        var containerElement = document.getElementById('inner-container');
+        var activeRegion = new ZingTouch.Region(containerElement);
+        // var childElement = document.getElementById('inner-container');
+        var change = 0;
+        var self = this;
+        self.state.enter = self.state.enter + 1;
+        
+        if(self.state.enter < 2){
+            activeRegion.bind(containerElement, 'rotate', function(event){
+                //Perform Operations
+                
+                var newAngle = event.detail.distanceFromLast;
+                console.log(newAngle);
+        
+                if(newAngle < 0){
+                    console.log(change);
+                    change++;
+                    if(change === 15){
+                        console.log("change state");
+                        change = 0;
+                        if(self.state.activePage === 'Home'){
+                            if(self.state.activeItem === 'NowPlaying'){
+                                self.setState({
+                                    activeItem : "Music"
+                                })
+                            }else if(self.state.activeItem === 'Music'){
+                                self.setState({
+                                    activeItem : "Games"
+                                })
+                            }else if(self.state.activeItem === 'Games'){
+                                self.setState({
+                                    activeItem : "Settings"
+                                })
+                            }else if(self.state.activeItem === 'Settings'){
+                                self.setState({
+                                    activeItem : "NowPlaying"
+                                })
+                            }
+                        }else if(self.state.activePage === 'Music'){
+                            if(self.state.activeItem === 'MyMusic'){
+                                self.setState({
+                                    activeItem : "Artists"
+                                })
+                            }else if(self.state.activeItem === 'Artists'){
+                                self.setState({
+                                    activeItem : "MyMusic"
+                                })
+                            }
+                        }
+                    }
+                }else{
+                    console.log(change);
+                    change++;
+                    if(change === 15){
+                        console.log("change state");
+                        change = 0;
+                        if(self.state.activePage === 'Home'){
+                            if(self.state.activeItem === 'NowPlaying'){
+                                self.setState({
+                                    activeItem : "Settings"
+                                })
+                            }else if(self.state.activeItem === 'Music'){
+                                self.setState({
+                                    activeItem : "NowPlaying"
+                                })
+                            }else if(self.state.activeItem === 'Games'){
+                                self.setState({
+                                    activeItem : "Music"
+                                })
+                            }else if(self.state.activeItem === 'Settings'){
+                                self.setState({
+                                    activeItem : "Games"
+                                })
+                            }
+                        }else if(self.state.activePage === 'Music'){
+                            if(self.state.activeItem === 'MyMusic'){
+                                self.setState({
+                                    activeItem : "Artists"
+                                })
+                            }else if(self.state.activeItem === 'Artists'){
+                                self.setState({
+                                    activeItem : "MyMusic"
+                                })
+                            }
+                        }
+                    }
+                }
+                });
+        }else{
+            console.log("Not allowed to enter")
+        }
+        
+    }
     changePage = () => {
         if(this.state.activeItem === 'Music'){
             this.setState({
