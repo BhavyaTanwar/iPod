@@ -1,6 +1,7 @@
 import React from 'react';
 import Screen from './Screen';
 import ZingTouch from 'zingtouch';
+import sound from './assets/music/ZindagiDoPalKi.mp3'
 
 class Ipod extends React.Component{
     constructor(){
@@ -11,6 +12,14 @@ class Ipod extends React.Component{
             enter : 0,
             play : true
         }
+    }
+    componentDidMount(){
+        let audio = document.getElementsByClassName("audio-element")[0];
+        console.log(audio)
+        this.setState({
+            audio : audio,
+        })
+        console.log(this.state)
     }
     render() {
         return (
