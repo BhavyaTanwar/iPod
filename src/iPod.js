@@ -31,6 +31,37 @@ class Ipod extends React.Component{
             })
         }         
     }
+    changePageToHomeScreen = () => {
+
+        if(this.state.activeItem === 'MyMusic' || this.state.activeItem === 'Artists'){
+            this.setState({
+                activeItem : 'Music',
+                activePage : 'Home'
+            })
+        }else{
+            this.setState({
+                activeItem : this.state.activeItem,
+                activePage : 'Home'
+            })
+        }
+        
+    }
+    toggle = () => {
+        if(this.state.activePage === 'MyMusic'){
+            if(this.state.play === true){
+                this.state.audio.pause();
+                this.setState({
+                    play : false
+                })
+            }else{
+                this.state.audio.play();
+                this.setState({
+                    play : true
+                })
+            }
+            console.log("toggled")
+        }
+    }
     componentDidMount(){
         let audio = document.getElementsByClassName("audio-element")[0];
         console.log(audio)
@@ -42,26 +73,26 @@ class Ipod extends React.Component{
     render() {
         return (
             <div style = {styles.ipodContainer}>
-                <audio className = "audio-element">
-                    <source></source>
-                </audio>
+                <audio className="audio-element">
+                    <source src={sound}></source>
+                </audio>    
                 <Screen activeItem={this.state.activeItem} activePage={this.state.activePage} audio={this.state.audio} />
-                <div id="inner-container" style={styles.wheel}>
-                    <div style={styles.buttonContainer}>
-                        <div style={styles.menuButton}>
-                            <i style = {styles.image} className="fas fa-bars"></i>
-                        </div>
+                <div id='inner-container' style = {styles.wheel} onMouseOver={this.rotateWheel}>
+                    <div style = {styles.buttonContainer}>
+                        <div style = {styles.menuButton}>
+                            <i onClick={this.changePageToHomeScreen} style = {styles.image} className="fas fa-bars"></i>
+                        </div> 
                     </div>
-                    <div style ={styles.buttonContainer}>
-                        <div style={styles.middleButtons}>
+                    <div style = {styles.buttonContainer}>
+                        <div style = {styles.middleButtons}>       
                             <i style = {styles.image} className="fas fa-fast-backward"></i>
-                            <div style={{backgroundImage: 'linear-gradient(45deg, #8c8181, transparent)' , width : '5rem' , height : '5rem' , borderRadius : '50%'}}></div>
+                            <div onClick={this.changePage} style={{backgroundImage: 'linear-gradient(45deg, #8c8181, transparent)' , width : '5rem' , height : '5rem' , borderRadius : '50%'}}></div>
                             <i style = {styles.image} className="fas fa-fast-forward"></i>
                         </div>
                     </div>
-                    <div style={styles.buttonContainer}>
-                        <div style={styles.playButton}>
-                        <i style = {styles.image} className="fas fa-play"></i>&nbsp;<i onClick={this.toggle} style = {styles.image} className="fas fa-pause"></i>
+                    <div style = {styles.buttonContainer}>
+                        <div onClick={this.toggle} style = {styles.playButton}>
+                            <i onClick={this.toggle} style = {styles.image} className="fas fa-play"></i>&nbsp;<i onClick={this.toggle} style = {styles.image} className="fas fa-pause"></i>
                         </div>
                     </div>
                 </div>
